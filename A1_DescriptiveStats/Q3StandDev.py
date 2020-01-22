@@ -20,9 +20,8 @@ for i in range(20):
 Mean = Sum/20
 SSE = 0
 for i in range(20):
-    SSE = (y[i]-Mean)**2
+    SSE+= (y[i]-Mean)**2
 StdDev = math.sqrt(SSE/19)
 print(x)
 print(y)
 print(StdDev)
-    

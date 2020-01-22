@@ -40,7 +40,7 @@ Mean = Sum/20
 for i in range(20):
     if(total[i]<(0.5*Mean)):
         grade[i] = 'U'
-
+p
 freq = {}
 for item in grade:
     if(item in freq):

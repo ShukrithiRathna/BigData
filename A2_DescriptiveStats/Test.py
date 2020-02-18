@@ -3,21 +3,35 @@
     Assignment 2
     Q1. Generating Stem and  Leaf  Plot
 '''
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 
-arr = [22, 21, 24, 19, 27, 28, 24, 25, 29, 28,
-       26, 31, 28, 27, 22, 39, 20, 10, 26, 24,
-       27, 28, 26, 28, 18, 32, 29, 25, 31, 27]
+labels=['Siege', 'Initiation', 'Crowd_control', 'Wave_clear', 'Objective_damage']
+markers = [0, 1, 2, 3, 4, 5]
+str_markers = ["0", "1", "2", "3", "4", "5"]
+def make_radar_chart(name, stats, attribute_labels = labels, plot_markers = markers, plot_str_markers = str_markers):
 
+    labels = np.array(attribute_labels)
 
+    angles = np.linspace(0, 2*np.pi, len(labels), endpoint=False)
+    stats = np.concatenate((stats,[stats[0]]))
+    angles = np.concatenate((angles,[angles[0]]))
 
-stem = []
-for i in range(0,len(arr)):
-    stem.append((int)(arr[i]/10))
-    arr[i]=arr[i]%10
-    print(arr[i])
-#stem.sort()
-arr.sort()
-print(arr)
-#print(stem,arr)
+    fig= plt.figure()
+    ax = fig.add_subplot(111, polar=True)
+    ax.plot(angles, stats, 'o-', linewidth=2)
+    ax.fill(angles, stats, alpha=0.25)
+    ax.set_thetagrids(angles * 180/np.pi, labels)
+    plt.yticks(markers)
+    ax.set_title(name)
+    
+   
+
+   # fig.savefig("static/images/%s.png" % name)
+
+    return plt.show()
+
+make_radar_chart("Agni", [2,3,4,4,5]) # example
+#make_radar_chart("Agni", [2,3,1,1,5])

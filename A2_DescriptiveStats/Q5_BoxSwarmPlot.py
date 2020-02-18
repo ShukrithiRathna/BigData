@@ -23,7 +23,7 @@ sns.swarmplot(y=chairs)
 plt.title('Swarm Plot for number of chairs')
 plt.xlabel('Chair')
 plt.ylabel('Count')
-
+plt.show()
 
 x.show()
 y.show()
